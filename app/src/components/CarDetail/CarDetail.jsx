@@ -6,7 +6,7 @@ import styles from "./CarDetail.module.css";
 export const CarDetail = ({ car: { id, name, brand, color, year }, onDeleteCar }) => {
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/cars/${id}`);
+      await axios.delete(`http://localhost:4000/cars/${id}`);
       onDeleteCar(id);
     } catch (error) {
       console.error("Error deleting car:", error);

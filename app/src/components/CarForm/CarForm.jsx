@@ -21,7 +21,7 @@ export const CarForm = ({ onSubmit }) => {
       };
 
       // Envia os dados do novo carro para a API
-      await axios.post("http://localhost:3000/cars", newCar);
+      await axios.post("http://localhost:4000/cars", newCar);
 
       // Chama a função onSubmit para atualizar a lista de carros no componente pai
       onSubmit();
@@ -68,9 +68,10 @@ export const CarForm = ({ onSubmit }) => {
   return (
     <form className={styles.carForm} onSubmit={handleSubmit}>
       <div>
-        <span>Modelo:</span>
+        <label htmlFor="name">Modelo:</label>
         <input
           type="text"
+          id="name"
           name="name"
           placeholder="Ex.: Fusca"
           value={name}
@@ -81,9 +82,10 @@ export const CarForm = ({ onSubmit }) => {
         />
       </div>
       <div>
-        <span>Marca:</span>
+        <label htmlFor="brand">Marca:</label>
         <input
           type="text"
+          id="brand"
           name="brand"
           placeholder="Ex.: Volkswagen"
           value={brand}
@@ -94,9 +96,10 @@ export const CarForm = ({ onSubmit }) => {
         />
       </div>
       <div>
-        <span>Cor:</span>
+        <label htmlFor="color">Cor:</label>
         <input
           type="text"
+          id="color"
           name="color"
           placeholder="Ex.: Azul"
           value={color}
@@ -107,9 +110,10 @@ export const CarForm = ({ onSubmit }) => {
         />
       </div>
       <div>
-        <span>Ano:</span>
+        <label htmlFor="year">Ano:</label>
         <input
           type="number"
+          id="year"
           name="year"
           placeholder="Ex.: 1971"
           value={year}
