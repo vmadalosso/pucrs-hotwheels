@@ -1,4 +1,3 @@
-import React from "react"
 import { CarDetail } from "../CarDetail/CarDetail"
 import { useNavigate } from "react-router-dom"
 
