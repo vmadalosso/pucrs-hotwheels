@@ -1,6 +1,6 @@
-/* CarForm.module.css */
+/* CarList.module.css */
 
-.carForm {
+.container {
   max-width: 600px;
   margin: 2rem auto;
   padding: 20px;
@@ -9,24 +9,17 @@
   background-color: #f3f4f6;
 }
 
-.carForm div {
-  margin-bottom: 1rem;
+.carList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
 }
 
-.carForm span {
-  display: block;
+.carItem {
   margin-bottom: 0.5rem;
 }
 
-.carForm input {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.submitButton {
+.addButton {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #4caf50;
@@ -37,6 +30,6 @@
   transition: background-color 0.3s ease;
 }
 
-.submitButton:hover {
+.addButton:hover {
   background-color: #388e3c;
 }

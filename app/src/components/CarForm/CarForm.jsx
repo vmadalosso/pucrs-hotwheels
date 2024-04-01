@@ -1,51 +1,51 @@
-import React, { useState } from "react"
-import styles from "./CarForm.module.css"
+// CarForm.jsx
+
+import React, { useState } from "react";
+import styles from "./CarForm.module.css";
 
 export const CarForm = ({ onSubmit }) => {
-  const [model, setModel] = useState("")
-  const [brand, setBrand] = useState("")
-  const [color, setColor] = useState("")
-  const [year, setYear] = useState("")
+  const [model, setModel] = useState("");
+  const [brand, setBrand] = useState("");
+  const [color, setColor] = useState("");
+  const [year, setYear] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    onSubmit({ model, brand, color, year })
-    setModel("")
-    setBrand("")
-    setColor("")
-    setYear("")
-  }
+    e.preventDefault();
+    onSubmit({ model, brand, color, year });
+    setModel("");
+    setBrand("");
+    setColor("");
+    setYear("");
+  };
 
-  // função switch/case para validar se os dados do formulário foram preenchidos
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     switch (name) {
       case "model":
-        setModel(value)
-        break
+        setModel(value);
+        break;
       case "brand":
-        setBrand(value)
-        break
+        setBrand(value);
+        break;
       case "color":
-        setColor(value)
-        break
+        setColor(value);
+        break;
       case "year":
-        setYear(value)
-        break
+        setYear(value);
+        break;
       default:
-        break
+        break;
     }
-  }
+  };
 
-  // mensagem personalizada utilizando setCustomValidity do js
   const handleInvalid = (e) => {
-    e.target.setCustomValidity("Favor preencher este campo corretamente")
-  }
+    e.target.setCustomValidity("Favor preencher este campo corretamente");
+  };
 
   const handleInputBlur = (e) => {
-    e.preventDefault()
-    e.target.setCustomValidity("")
-  }
+    e.preventDefault();
+    e.target.setCustomValidity("");
+  };
 
   return (
     <form className={styles.carForm} onSubmit={handleSubmit}>
@@ -102,7 +102,7 @@ export const CarForm = ({ onSubmit }) => {
         />
       </div>
 
-      <button type="submit">Adicionar</button>
+      <button type="submit" className={styles.submitButton}>Adicionar</button> {/* Aplica a classe do CSS Module */}
     </form>
-  )
-}
+  );
+};

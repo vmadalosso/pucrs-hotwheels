@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-import { Navbar } from "./components/NavBar/NavBar"
+import { Navbar } from "./components/Navbar/Navbar"
 import { CarForm } from "./components/CarForm/CarForm"
 import { CarList } from "./components/CarList/CarList"
 import { Home } from "./components/Home/Home"
