@@ -1,28 +1,46 @@
-// CarForm.jsx
-
 import React, { useState } from "react";
+import axios from "axios"; // Importa o Axios para fazer requisições HTTP
+import { v4 as uuidv4 } from 'uuid'; // Importa a função v4 do pacote uuid para conseguir passar um id para os novos carros adicionados pelo CarForm.jsx
 import styles from "./CarForm.module.css";
 
 export const CarForm = ({ onSubmit }) => {
-  const [model, setModel] = useState("");
+  const [name, setName] = useState(""); 
   const [brand, setBrand] = useState("");
   const [color, setColor] = useState("");
   const [year, setYear] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({ model, brand, color, year });
-    setModel("");
-    setBrand("");
-    setColor("");
-    setYear("");
+    try {
+      const newCar = {
+        id: uuidv4(), // Gera um ID único usando o pacote uuid
+        name,
+        brand,
+        color,
+        year
+      };
+
+      // Envia os dados do novo carro para a API
+      await axios.post("http://localhost:3000/cars", newCar);
+
+      // Chama a função onSubmit para atualizar a lista de carros no componente pai
+      onSubmit();
+
+      // Limpa os campos do formulário
+      setName("");
+      setBrand("");
+      setColor("");
+      setYear("");
+    } catch (error) {
+      console.error("Error adding car:", error);
+    }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-      case "model":
-        setModel(value);
+      case "name":
+        setName(value);
         break;
       case "brand":
         setBrand(value);
@@ -53,9 +71,9 @@ export const CarForm = ({ onSubmit }) => {
         <span>Modelo:</span>
         <input
           type="text"
-          name="model"
+          name="name"
           placeholder="Ex.: Fusca"
-          value={model}
+          value={name}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
           onInvalid={handleInvalid}
@@ -102,7 +120,9 @@ export const CarForm = ({ onSubmit }) => {
         />
       </div>
 
-      <button type="submit" className={styles.submitButton}>Adicionar</button> {/* Aplica a classe do CSS Module */}
+      <button type="submit" className={styles.submitButton}>
+        Adicionar
+      </button>
     </form>
   );
 };

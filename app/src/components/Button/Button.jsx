@@ -1,4 +1,4 @@
-// Button.jsx
+// Componente Button.jsx que criei com a ideia de reutilizar em outros lugares que haviam botões
 
 import React from "react";
 import styles from "./Button.module.css";

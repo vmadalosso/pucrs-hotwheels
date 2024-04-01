@@ -1,5 +1,3 @@
-// About.jsx
-
 import React from "react";
 import styles from "./About.module.css"; // Importa o arquivo CSS Module
 

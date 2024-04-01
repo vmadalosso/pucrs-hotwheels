@@ -1,18 +1,26 @@
-// CarDetail.jsx
-
 import React from "react";
-import Button from "../Button/Button"; // Importa o componente de botão
-import styles from "../Button/Button.module.css"
+import axios from "axios";
+import Button from "../Button/Button";
+import styles from "./CarDetail.module.css";
 
-export const CarDetail = ({ car: { id, model, brand }, onDeleteCar }) => {
-  const handleDelete = () => {
-    onDeleteCar(id);
+export const CarDetail = ({ car: { id, name, brand, color, year }, onDeleteCar }) => {
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/cars/${id}`);
+      onDeleteCar(id);
+    } catch (error) {
+      console.error("Error deleting car:", error);
+      console.error("Error response:", error.response);
+    }
   };
 
   return (
     <li className={styles.carDetail}>
       <div>
-        {model} - {brand}{" "}
+        <span>Modelo:</span> {name} <br />
+        <span>Marca:</span> {brand} <br />
+        <span>Cor:</span> {color} <br />
+        <span>Ano:</span> {year} <br />
         <Button onClick={handleDelete} variant="danger">
           Excluir
         </Button>
